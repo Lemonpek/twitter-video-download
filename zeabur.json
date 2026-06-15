@@ -1,0 +1,26 @@
+{
+  "build": {
+    "builder": "Dockerfile",
+    "dockerfile": "Dockerfile"
+  },
+  "deploy": {
+    "healthCheck": {
+      "path": "/",
+      "interval": 30,
+      "timeout": 5,
+      "retries": 3
+    },
+    "environment": {
+      "FLASK_APP": "app.py",
+      "PORT": "8080"
+    }
+  },
+  "domains": [],
+  "volumes": [
+    {
+      "name": "temp_downloads",
+      "mountPath": "/app/temp_downloads",
+      "size": "1GB"
+    }
+  ]
+}

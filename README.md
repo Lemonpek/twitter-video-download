@@ -85,6 +85,7 @@ Twitter Video Downloader, X Video Downloader, Download Twitter Videos, Download 
 - **Backend | 后端**: Flask
 - **Video Parser | 视频解析**: yt-dlp
 - **Frontend | 前端**: Native HTML/CSS/JavaScript
+- **Deployment | 部署**: Docker + Zeabur
 
 ## Notes | 注意事项
 
@@ -92,6 +93,44 @@ Twitter Video Downloader, X Video Downloader, Download Twitter Videos, Download 
 - Temporary files are stored in `temp_downloads/` | 临时文件存储在 `temp_downloads/` 目录
 - Configure proxy in `.env` if needed | 如需代理请在 `.env` 中配置
 - Proxy settings are not committed to Git (in `.gitignore`) | 代理设置不会提交到 Git（已在 `.gitignore` 中）
+
+## Zeabur Deployment | Zeabur 云部署
+
+### 部署选项
+
+**Option 1: Local Development | 本地开发**
+```bash
+# 安装依赖
+pip install -r requirements.txt
+
+# 运行应用
+python app.py
+```
+
+**Option 2: Docker Deployment | Docker 部署**
+```bash
+# 构建 Docker 镜像
+docker build -t twitter-video-download .
+
+# 运行 Docker 容器
+docker run -p 8080:8080 twitter-video-download
+```
+
+**Option 3: Zeabur Cloud Deployment | Zeabur 云部署**
+
+详细部署指南请查看 [DEPLOY-ZEABUR.md](DEPLOY-ZEABUR.md)
+
+1. 将代码推送到 GitHub
+2. 在 Zeabur 控制台创建新项目
+3. 连接 GitHub 仓库
+4. 配置环境变量（如需代理）
+5. 自动部署完成
+
+**新增部署文件：**
+- `Dockerfile` - 容器化配置
+- `zeabur.json` - Zeabur 平台配置
+- `.dockerignore` - Docker 忽略文件
+- `DEPLOY-ZEABUR.md` - 详细部署指南
 
 ## Troubleshooting | 故障排除
 

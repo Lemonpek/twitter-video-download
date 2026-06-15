@@ -10,6 +10,9 @@ load_dotenv()
 
 app = Flask(__name__)
 
+# 获取环境变量端口，默认 5000
+port = int(os.environ.get('PORT', 5000))
+
 TEMP_DIR = Path("temp_downloads")
 TEMP_DIR.mkdir(exist_ok=True)
 
@@ -97,4 +100,4 @@ def cleanup():
     return jsonify({'success': True})
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(host='0.0.0.0', port=port)
